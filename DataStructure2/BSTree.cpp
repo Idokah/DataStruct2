@@ -10,9 +10,9 @@ BSTree::~BSTree()
 		delete root;
 }
 
-BSTreeNode* BSTree::find(int key)
+TreeNode* BSTree::find(int key)
 {
-	BSTreeNode* temp = root;
+	TreeNode* temp = root;
 	while (temp != nullptr)
 	{
 		if (key == (temp->value).key)
@@ -32,9 +32,9 @@ void BSTree::insert(Pair item)
 		cout << "Error";
 		exit(1);
 	}
-	BSTreeNode* temp = this->root;
-	BSTreeNode* parent = nullptr;
-	BSTreeNode* newNode;
+	TreeNode* temp = this->root;
+	TreeNode* parent = nullptr;
+	TreeNode* newNode;
 	while (temp != nullptr)
 	{
 		parent = temp;
@@ -43,7 +43,7 @@ void BSTree::insert(Pair item)
 		else 
 			temp = temp->right;
 	}
-	newNode = new BSTreeNode(item, nullptr, nullptr);
+	newNode = new TreeNode(item, nullptr, nullptr);
 	if (parent == nullptr)
 		this->root = newNode;
 	else if (item.key < (parent->value).key)
@@ -54,8 +54,8 @@ void BSTree::insert(Pair item)
 
 void BSTree::deleteNode(int key)
 {
-	BSTreeNode* curr = root;
-	BSTreeNode* prev = nullptr;
+	TreeNode* curr = root;
+	TreeNode* prev = nullptr;
 	//find to be deleted node, parent.
 	while (curr != nullptr && (curr->value).key != key)
 	{
@@ -74,7 +74,7 @@ void BSTree::deleteNode(int key)
 	if (curr->left == nullptr || curr->right == nullptr)
 	{
 		//newCurr will replace deleted node
-		BSTreeNode* newCurr;
+		TreeNode* newCurr;
  
 		if (curr->left == nullptr)
 			newCurr = curr->right;
@@ -100,8 +100,8 @@ void BSTree::deleteNode(int key)
 	else
 	{
 		//find max in left child tree
-		BSTreeNode* maxLeftParent = curr;
-		BSTreeNode* maxLeft;
+		TreeNode* maxLeftParent = curr;
+		TreeNode* maxLeft;
 		maxLeft = curr->left;
 		//find the max value from the left side and his parent.
 		while (maxLeft->right != nullptr)

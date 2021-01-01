@@ -1,17 +1,18 @@
 #pragma once
 #include <iostream>
-#include "BSTreeNode.h"
+#include "TreeNode.h"
+
 using namespace std;
 class BSTree 
 {
 private:
-	BSTreeNode* root;
+	TreeNode* root;
 public:
 	BSTree();
 	~BSTree();
-	BSTreeNode* find(int key);
+	TreeNode* find(int key);
 	void insert(Pair item);
 	void deleteNode(int key);
 	
-
+	
 };
