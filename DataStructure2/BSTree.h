@@ -1,20 +1,17 @@
 #pragma once
-struct Pair {
-	int frequency;
-	int ascii;
-};
-
-class BSTreeNode
+#include <iostream>
+#include "BSTreeNode.h"
+using namespace std;
+class BSTree 
 {
 private:
-	Pair value;
-	BSTreeNode* left, * right;
+	BSTreeNode* root;
 public:
-	BSTreeNode();
-	BSTreeNode(Pair item, BSTreeNode* left, BSTreeNode* right);
-	~BSTreeNode();
-	Pair* Find(int key);
-	void Insert(Pair Item);
-	void inceaseFrequency(Pair Item);
+	BSTree();
+	~BSTree();
+	BSTreeNode* find(int key);
+	void insert(Pair item);
+	void deleteNode(int key);
+	
 
 };
