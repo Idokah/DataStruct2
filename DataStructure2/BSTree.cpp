@@ -1,4 +1,4 @@
-#include "BinaryTree.h"
+#include "BSTree.h"
 
 BSTreeNode::BSTreeNode()
 {
