@@ -15,9 +15,10 @@ int main() {
 
     cout << "Please enter file name: ";
     //cin >> fileName;
-    BSTree* bsTree = readFromFile("input1.txt");
+    BSTree* bsTree = readFromFile("input2.txt");
     bsTree->printInOrder();
     BTree* hoffmanTree = buildHoffmanTree(bsTree, MAX);
+    hoffmanTree->printEncodingTable();
     //delete bsTree;
     delete hoffmanTree;
     return 0;
@@ -34,7 +35,8 @@ BSTree* readFromFile(string fileName)
         cout << "Error with infile" << endl;
         exit(1);
     }
-    infile >> ascii;
+    //infile >> ascii;
+    infile.get(ascii);
     while (!infile.eof())
     {
         if (!infile.good())
@@ -43,7 +45,7 @@ BSTree* readFromFile(string fileName)
             exit(1);
         }
         bsTree->increaseCount(ascii);
-        infile >> ascii;
+        infile.get(ascii);
     }
     infile.close();
     return bsTree;

@@ -4,7 +4,6 @@
 MinHeap::MinHeap(int max) : heapSize(0), allocated(1), maxSize(max), data(new TreeNode*[max]) {}
 
 MinHeap::MinHeap(BSTree* tree, int max) : allocated(1){
-
     int size;
     TreeNode** arr = buidArrFromTree(tree, max, size);
     this->heapSize = size;
