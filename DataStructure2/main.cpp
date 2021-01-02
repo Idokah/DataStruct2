@@ -5,8 +5,10 @@
 #include "MinHeap.h"
 
 using namespace std;
+const int MAX = 255;
 
 BSTree* readFromFile(string fileName);
+BTree* buildHoffmanTree(BSTree* bsTree, int n);
 
 int main() {
     string fileName;
@@ -15,8 +17,9 @@ int main() {
     //cin >> fileName;
     BSTree* bsTree = readFromFile("input1.txt");
     bsTree->printInOrder();
-    BTree* hoffmanTree = buildHoffmanTree(bsTree);
-    delete bsTree;
+    BTree* hoffmanTree = buildHoffmanTree(bsTree, MAX);
+    //delete bsTree;
+    delete hoffmanTree;
     return 0;
 }
 
@@ -46,16 +49,18 @@ BSTree* readFromFile(string fileName)
     return bsTree;
 }
 
-BTree* buildHoffmanTree(BSTree* bsTree, int n) 
+BTree* buildHoffmanTree(BSTree* bsTree, int n)
 {
-    MinHeap Q(bsTree);
+    MinHeap Q(bsTree, n);
+    int size = Q.getHeapSize();
     TreeNode* node;
-    Pair pair;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < size - 1; i++)
     {
         node = new TreeNode();
-        node->setLeft(new TreeNode(Q.deleteMin(), nullptr, nullptr));
-        node->setRight(new TreeNode(Q.deleteMin(), nullptr, nullptr));
+        node->setLeft(Q.deleteMin());
+        node->setRight(Q.deleteMin());
         node->setFreq(node->getLeft()->getFreq()+ node->getRight()->getFreq());
+        Q.insert(node);
     }
+    return new BTree(Q.deleteMin());
 }

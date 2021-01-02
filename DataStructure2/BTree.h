@@ -6,7 +6,6 @@ class BTree
 private:
 	TreeNode* root;
 public:
-	BTree();
+	BTree(TreeNode* root);
 	~BTree();
-	
 };

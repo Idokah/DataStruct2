@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/DataStructure2/input1.txt
+/DataStructure2/input2.txt
+/DataStructure2/input3.txt
