@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="BTree.cpp" />
     <ClCompile Include="BSTree.cpp" />
+    <ClCompile Include="Pair.cpp" />
     <ClCompile Include="TreeNode.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MinHeap.cpp" />
@@ -148,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="BTree.h" />
     <ClInclude Include="BSTree.h" />
+    <ClInclude Include="Pair.h" />
     <ClInclude Include="TreeNode.h" />
     <ClInclude Include="MinHeap.h" />
   </ItemGroup>

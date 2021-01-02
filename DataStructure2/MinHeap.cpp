@@ -1,6 +1,28 @@
 #include "MinHeap.h"
+#include "BSTree.h"
 
 MinHeap::MinHeap(int max) : heapSize(0), allocated(1), maxSize(max), data(new Pair[max]) {}
+
+MinHeap::MinHeap(BSTree* tree, int n) : heapSize(n), maxSize(n), allocated(1) {
+
+    Pair* arr = buidArrFromTree(tree);
+    MinHeap(arr, n);
+}
+
+Pair* MinHeap::buidArrFromTree(BSTree* tree)
+{
+    Pair* arr = new Pair[this->maxSize];
+    buidArrFromTreeRec(tree->getRoot(), arr);
+}
+
+Pair* MinHeap::buidArrFromTreeRec(TreeNode* root, Pair*& arr)
+{
+    static int index = 0;
+    if (root == nullptr) return;
+    buidArrFromTreeRec(root->getLeft(), arr);
+    arr[index] = root->getValue();
+    buidArrFromTreeRec(root->getRight(), arr);
+}
 
 MinHeap::MinHeap(Pair A[], int n) : heapSize(n), maxSize(n), allocated(0), data(A) {
     for (int i = n / 2 - 1; i >= 0; i--)
@@ -24,7 +46,7 @@ int MinHeap::parent(int node) {
     return (node-1)/2;
 }
 
-int MinHeap::fixHeap(int node) {
+void MinHeap::fixHeap(int node) {
     int max;
     int left = this->left(node);
     int right = this->right(node);

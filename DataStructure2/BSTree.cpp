@@ -126,3 +126,35 @@ void BSTree::deleteNode(int key)
 		delete maxLeft;
 	}
 }
+
+void BSTree::increaseCount(int key)
+{
+	TreeNode* item;
+	item = find(key);
+	if (item != nullptr)
+	{
+		item->value.frequency++;
+	}
+	else {
+		Pair pair = { key,1 };
+		insert(pair);
+	}
+}
+
+void BSTree::printInOrder(){
+	printInOrder(this->root);
+}
+
+TreeNode* BSTree::getRoot()
+{
+	return this->root;
+}
+
+void BSTree::printInOrder(TreeNode* root)
+{
+	if (root == nullptr)
+		return; 
+	printInOrder(root->left);
+	cout << root->value;
+	printInOrder(root->right);
+}
